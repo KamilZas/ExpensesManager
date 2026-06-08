@@ -1,50 +1,111 @@
-# Welcome to your Expo app 👋
+# Expense Manager
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Kompletna aplikacja mobilna do zarzadzania przychodami i wydatkami, zbudowana w React Native, Expo SDK 54 i TypeScript.
 
-## Get started
+## Funkcje
 
-1. Install dependencies
+- aktualne saldo, suma przychodow i suma wydatkow,
+- dodawanie oraz edycja transakcji,
+- usuwanie z potwierdzeniem,
+- wyszukiwanie, filtrowanie po typie i kategorii,
+- wykres wydatkow wedlug kategorii,
+- wykres miesiecznych wydatkow,
+- zapis lokalny w AsyncStorage,
+- pull to refresh, loading screen i puste stany,
+- jasny i ciemny motyw,
+- animowane przejscia React Navigation.
 
-   ```bash
-   npm install
-   ```
+## Struktura katalogow
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+src/
+├── screens/
+│   ├── HomeScreen.tsx
+│   ├── AddTransactionScreen.tsx
+│   ├── TransactionsScreen.tsx
+│   └── StatisticsScreen.tsx
+├── components/
+│   ├── TransactionItem.tsx
+│   ├── SummaryCard.tsx
+│   └── CategoryBadge.tsx
+├── services/
+│   └── storage.ts
+├── types/
+│   └── Transaction.ts
+├── navigation/
+│   └── AppNavigator.tsx
+└── utils/
+    ├── calculations.ts
+    ├── formatters.ts
+    └── theme.ts
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Pliki startowe aplikacji:
 
-## Learn more
+```text
+App.tsx
+index.ts
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Instalacja w tym projekcie
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm install
+npm start
+```
 
-## Join the community
+Potem wybierz w terminalu Expo:
 
-Join our community of developers creating universal apps.
+- `a` dla emulatora Android,
+- `i` dla symulatora iOS,
+- zeskanuj QR kod w Expo Go.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Utworzenie nowego projektu Expo
+
+```bash
+npx create-expo-app ExpenseManager --template blank-typescript
+cd ExpenseManager
+```
+
+Zainstaluj pakiety wymagane przez aplikacje:
+
+```bash
+npx expo install @expo/vector-icons @react-native-async-storage/async-storage @react-native-community/datetimepicker react-native-gesture-handler react-native-safe-area-context react-native-screens
+npm install @react-navigation/native @react-navigation/bottom-tabs @react-navigation/native-stack
+```
+
+Skopiuj do nowego projektu katalog `src/` oraz pliki `App.tsx` i `index.ts`. W `package.json` ustaw:
+
+```json
+{
+  "main": "index.ts"
+}
+```
+
+Uruchom aplikacje:
+
+```bash
+npm start
+```
+
+## Komendy developerskie
+
+```bash
+npm run lint
+npm run typecheck
+npm run android
+npm run ios
+```
+
+## Model danych
+
+```ts
+interface Transaction {
+  id: string;
+  title: string;
+  amount: number;
+  type: 'income' | 'expense';
+  category: string;
+  date: string;
+}
+```
