@@ -50,6 +50,8 @@ index.ts
 ## Instalacja w tym projekcie
 
 ```bash
+git clone https://github.com/KamilZas/ExpensesManager.git
+cd ./ExpensesManager
 npm install
 npm start
 ```
