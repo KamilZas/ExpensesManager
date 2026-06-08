@@ -1,4 +1,4 @@
-# Expense Manager
+# Expenses Manager
 
 Kompletna aplikacja mobilna do zarzadzania przychodami i wydatkami, zbudowana w React Native, Expo SDK 54 i TypeScript.
 
