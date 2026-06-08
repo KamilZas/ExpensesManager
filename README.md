@@ -63,7 +63,7 @@ Potem wybierz w terminalu Expo:
 ## Utworzenie nowego projektu Expo
 
 ```bash
-npx create-expo-app ExpenseManager --template blank-typescript
+npx create-expo-app ExpensesManager --template blank-typescript
 cd ExpenseManager
 ```
 
